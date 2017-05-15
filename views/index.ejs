@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    Last item added to database: <%= lastitem.name %><br><br>
+
+    <form action="/ingredients" method="post">
+      <!-- req.body.ingredient_name -->
+      <input type="text" name="ingredient_name">
+      <input type="submit">
+    </form>
+
+    <ul>
+      <% ingredients.forEach(ingredient => { %>
+        <li><%= ingredient.name %> <a href="/ingredient/<%= ingredient._id %>/edit">Edit</a> <a href="/ingredient/<%= ingredient._id %>/delete">Delete</a></li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
