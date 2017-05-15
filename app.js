@@ -18,7 +18,7 @@ console.log(token)
 var mongoose = require('mongoose');
 
 // database is called recipes
-mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PW}@ds143231.mlab.com:43231/recipes-shouhei`);
+mongoose.connect(process.env.RECIPES_DB);
 const { connection: db } = mongoose;
 
 db.on('error', console.error.bind(console, 'connection error:'));

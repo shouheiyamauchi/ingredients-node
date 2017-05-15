@@ -44,7 +44,7 @@ exports.postIngredientsApi = (req, res) => {
   ingredient.name = name;
   ingredient.save()
     .then(() => {
-      res.redirect('/api/ingredients')
+      res.json(ingredient)
     });
 };
 
