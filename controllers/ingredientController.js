@@ -79,7 +79,7 @@ exports.updateIngredientApi = (req, res) => {
     new: true // returns new ingredient
   })
   .then(ingredient => {
-    res.redirect(`/api/ingredients/${req.params.id}`)
+    res.json(ingredient)
   });
 };
 

@@ -39,8 +39,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var middleware = require('./middleware/middleware')
-app.use(middleware.mw)
-// app.use('/api/*', authApi);
+//app.use(middleware.mw)
+app.use('/api/*', authApi);
 app.use('/', index);
 app.use('/users', users);
 

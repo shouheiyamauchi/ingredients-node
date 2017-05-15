@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 const authApi = (req, res, next) => {
 
   console.log("authenticating api request")
-  console.log("req", req.params)
+  console.log("req", req.query)
 
   const key = req.body.key || req.query.key || req.headers['x-access-token'];
 
