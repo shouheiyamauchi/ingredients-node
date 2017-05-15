@@ -87,6 +87,11 @@ exports.deleteIngredientApi = function(req, res){
 	Ingredient.findByIdAndRemove({_id: req.params.id},
 	   function(err){
 		if(err) res.json(err);
-		else    res.redirect(`/api/ingredients?key=${req.query.key}`);
+		else {
+      Ingredient.find()
+        .then(ingredients => {
+          res.json(ingredients)
+        })
+    };
 	});
 };
