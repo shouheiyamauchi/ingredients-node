@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
-
-
-
 const Ingredient = require('../models/Ingredient');
 const ingredientController = require('../controllers/ingredientController')
 
@@ -27,15 +23,5 @@ router.get('/ingredient/:id/delete', function(req, res){
 		else    res.redirect('/ingredients');
 	});
 });
-
-router.get('/api/ingredients', ingredientController.getIngredientsApi);
-
-router.post('/api/ingredients', ingredientController.postIngredientsApi);
-
-router.get('/api/ingredients/:id', ingredientController.getIngredientApi);
-
-router.post('/api/ingredients/:id', ingredientController.updateIngredientApi);
-
-router.delete('/api/ingredients/:id', ingredientController.deleteIngredientApi);
 
 module.exports = router;

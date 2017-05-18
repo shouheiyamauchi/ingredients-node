@@ -19,13 +19,6 @@ exports.getIngredients = (req,res) => {
     })
 };
 
-exports.getIngredientsApi = (req,res) => {
-  Ingredient.find()
-    .then(ingredients => {
-      res.json(ingredients)
-    })
-};
-
 exports.postIngredients = (req, res) => {
   console.log('req.body: ', req.body)
   const name = req.body.ingredient_name;
@@ -37,29 +30,10 @@ exports.postIngredients = (req, res) => {
     });
 };
 
-exports.postIngredientsApi = (req, res) => {
-  console.log('req: ', req)
-  const name = req.query.name;
-  let ingredient = new Ingredient();
-  ingredient.name = name;
-  ingredient.save()
-    .then(() => {
-      res.json(ingredient)
-    });
-};
-
 exports.getEditIngredient = (req,res) => {
   Ingredient.findOne({ _id: req.params.id})
     .then(ingredient => {
       res.render('editIngredient', {ingredient: ingredient})
-    });
-};
-
-exports.getIngredientApi = (req,res) => {
-  console.log("req.params: ", req.params)
-  Ingredient.findOne({ _id: req.params.id})
-    .then(ingredient => {
-      res.json(ingredient)
     });
 };
 
@@ -71,27 +45,4 @@ exports.updateIngredient = (req, res) => {
   .then(ingredient => {
     res.redirect('/ingredients')
   });
-};
-
-exports.updateIngredientApi = (req, res) => {
-  console.log('edit req.query: ', req.query)
-  Ingredient.findOneAndUpdate({ _id: req.params.id }, req.query, {
-    new: true // returns new ingredient
-  })
-  .then(ingredient => {
-    res.json(ingredient)
-  });
-};
-
-exports.deleteIngredientApi = function(req, res){
-	Ingredient.findByIdAndRemove({_id: req.params.id},
-	   function(err){
-		if(err) res.json(err);
-		else {
-      Ingredient.find()
-        .then(ingredients => {
-          res.json(ingredients)
-        })
-    };
-	});
 };

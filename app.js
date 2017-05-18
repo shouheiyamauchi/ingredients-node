@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var api = require('./routes/api');
 const authApi = require('./middleware/authApi');
 
 var app = express();
@@ -42,6 +43,7 @@ var middleware = require('./middleware/middleware')
 //app.use(middleware.mw)
 app.use('/api/*', authApi);
 app.use('/', index);
+app.use('/api', api);
 app.use('/users', users);
 
 
